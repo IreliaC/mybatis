@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.joyowo.mybatis.mapper.MyMapper">
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache">
+    <property name="timeToIdleSeconds" value="6"/>
+    <property name="timeToLiveSeconds" value="6"/>
+    <property name="maxBytesLocalHeap" value="100M"/>
+    <property name="maxEntriesLocalHeap" value="100"/>
+    <property name="maxEntriesLocalDisk" value="10000"/>
+    <property name="memoryStoreEvictionPolicy" value="LRU"/>
+    </cache>
+
+    <resultMap id="ArticleMap" type="com.joyowo.mybatis.pojo.Article">
+        <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="cat_id" property="catId" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="summary" property="summary" jdbcType="VARCHAR"/>
+        <result column="o_image" property="oImage" jdbcType="VARCHAR"/>
+        <result column="s_image" property="sImage" jdbcType="VARCHAR"/>
+        <result column="author" property="author" jdbcType="VARCHAR"/>
+        <result column="source" property="source" jdbcType="TINYINT"/>
+        <result column="page_url" property="pageUrl" jdbcType="VARCHAR"/>
+        <result column="sort_order" property="sortOrder" jdbcType="INTEGER"/>
+        <result column="is_featured" property="isFeatured" jdbcType="BIT"/>
+        <result column="is_newest" property="isNewest" jdbcType="BIT"/>
+        <result column="is_column" property="isColumn" jdbcType="BIT"/>
+        <result column="is_home_page" property="isHomePage" jdbcType="BIT"/>
+        <result column="status" property="status" jdbcType="BIT"/>
+        <result column="click_cnt" property="clickCnt" jdbcType="INTEGER"/>
+        <result column="release_date" property="releaseDate" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="link_activity_id" property="linkActivityId" jdbcType="INTEGER"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+    </resultMap>
+
+   <select id="selectAll" parameterType="java.util.Map" resultMap="ArticleMap">
+       SELECT article_id,cat_id
+       FROM
+       cms_article
+       WHERE
+       article_id &lt; ${articleId}
+   </select>
+</mapper>
