@@ -3,6 +3,7 @@ package com.joyowo.mybatis.myservice;
 import com.joyowo.mybatis.mapper.MyMapper;
 import com.joyowo.mybatis.mybatis.PageView;
 import com.joyowo.mybatis.pojo.Article;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,9 @@ public class MyService {
         Map<String, Object> map = new HashMap<>();
         map.put("articleId",500);
         map.put("paging",pageView);
-        List<Article> articles = myMapper.selectAll(map);
+        List<Map<String,Object>> articles = myMapper.selectAll(map);
+        long count = articles.stream().filter(map2 -> NumberUtils.createInteger(
+                map2.computeIfAbsent("article_id", k -> 11).toString()).equals("21")).count();
         pageView.setRecords(articles);
         return pageView;
 

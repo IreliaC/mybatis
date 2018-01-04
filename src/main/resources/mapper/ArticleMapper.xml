@@ -34,7 +34,7 @@
         <result column="id" property="id" jdbcType="INTEGER"/>
     </resultMap>
 
-   <select id="selectAll" parameterType="java.util.Map" resultMap="ArticleMap">
+   <select id="selectAll" parameterType="java.util.Map" resultType="HashMap">
        SELECT article_id,cat_id
        FROM
        cms_article

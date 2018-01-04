@@ -11,9 +11,7 @@ import java.util.Map;
  * Author: chenby
  * Date: 2017-12-27
  */
-@Mapper
-@Repository
 public interface MyMapper {
 
-    List<Article> selectAll(Map<String,Object> map);
+    List<Map<String,Object>> selectAll(Map<String,Object> map);
 }

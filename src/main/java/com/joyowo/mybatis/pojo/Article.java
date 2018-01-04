@@ -2,6 +2,7 @@ package com.joyowo.mybatis.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,8 @@ import java.util.Date;
  * Date: 2017-12-27
  */
 @Data
-public class Article {
+public class Article implements Serializable {
+
     private Integer articleId;
     private Integer catId;      //分类ID
     private String title;       //标题

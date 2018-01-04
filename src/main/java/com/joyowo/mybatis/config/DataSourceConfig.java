@@ -22,7 +22,7 @@ import java.util.Map;
 public class DataSourceConfig {
 
     @Bean(name = "myDatasource")
-    @ConfigurationProperties(prefix = "srping.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return new DruidDataSource();
     }
