@@ -24,7 +24,7 @@ public class AddressController {
     public static void main(String[] args) {
         Map<Integer,String> map = new HashMap<>();
 
-        map.put(1,"aa");
+        map.put(1,"aa1");
         String s = map.computeIfAbsent(2, v -> "Aa");
     }
 
